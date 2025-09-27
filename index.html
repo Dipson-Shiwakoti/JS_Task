@@ -1,0 +1,556 @@
+<html lang="en">
+  <head>
+    <title>JavaScript Events</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>JavaScript Events</h1>
+    </header>
+    <button name="event-section" class="toggle-btn">Question 1</button>
+    <button name="event-handler-section" class="toggle-btn">Question 2</button>
+    <button name="keyboard-events-section" class="toggle-btn">
+      Question 3
+    </button>
+    <button name="mouse-events-section" class="toggle-btn">Question 4</button>
+    <button name="jquery-introduction" class="toggle-btn">Question 5</button>
+    <button name="jquery-inclusion" class="toggle-btn">Question 6</button>
+    <button name="jquery-event-loading" class="toggle-btn">Question 7</button>
+    <button name="jquery-selection" class="toggle-btn">Question 8</button>
+    <button name="jquery-events" class="toggle-btn">Question 9</button>
+    <button name="jquery-manipulation" class="toggle-btn">Question 10</button>
+    <button name="jquery-methods" class="toggle-btn">Question 11</button>
+    <button name="jquery-show-hide" class="toggle-btn">Question 12</button>
+    <a href="calculator.html"><button>Calculator</button></a>
+    <section class="event-section">
+      <h2>Event in JavaScript</h2>
+      <p>
+        In JavaScript, an event is any occurrence or action that is triggered by
+        the user or the browser that the JavaScript code can respond to. These
+        events are usually associated with interactions like clicks, key
+        presses, mouse movements, page load, etc.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (HTML):</strong>
+        <code>
+          &lt;button onclick="handleClick()"&gt;Click Me&lt;/button&gt;
+        </code>
+        <br />
+        <strong>Code Example (JavaScript):</strong>
+        <code>
+          function handleClick() {<br />
+          &nbsp;&nbsp;document.getElementById('eventOutput').innerText = 'Button
+          was clicked!';<br />
+          }
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <p>Click the button below to trigger an event.</p>
+        <button onclick="handleClick()">Click Me</button>
+        <p id="eventOutput"></p>
+      </div>
+    </section>
+
+    <section class="event-handler-section">
+      <h2>Different Ways to Handle Events in JavaScript</h2>
+
+      <h3>Inline Event Handling:</h3>
+      <p>
+        You can directly add event handling code in the HTML element's
+        attribute.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (HTML):</strong>
+        <code>
+          &lt;button onclick="alert('I am clicked again')"&gt;Click
+          Me&lt;/button&gt;
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <button onclick="alert('I am clicked again')">Click Me</button>
+      </div>
+
+      <h3>Event Handler Property:</h3>
+      <p>
+        You can assign the event handler to an element's property (using
+        JavaScript). This method allows for one event listener per element.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (HTML):</strong>
+        <code> &lt;button id="myBtn1"&gt;Click Me&lt;/button&gt; </code>
+        <br />
+        <strong>Code Example (JavaScript):</strong>
+        <code>
+          document.getElementById('myBtn1').onclick = function() {<br />
+          &nbsp;&nbsp;alert('Button1 Clicked!');<br />
+          };
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <button id="myBtn1">Click Me</button>
+      </div>
+
+      <h3>Using addEventListener()</h3>
+      <p>
+        This method allows you to attach multiple event listeners to an element
+        and provides more control, such as capturing or bubbling the event and
+        removing the listener later.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (HTML):</strong>
+        <code> &lt;button id="myBtn2"&gt;Click Me&lt;/button&gt; </code>
+        <br />
+        <strong>Code Example (JavaScript):</strong>
+        <code>
+          document.getElementById('myBtn2').addEventListener('click', function()
+          {<br />
+          &nbsp;&nbsp;alert('Button2 Clicked!');<br />
+          });
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <button id="myBtn2">Click Me</button>
+      </div>
+    </section>
+
+    <section class="keyboard-events-section">
+      <h2>Keyboard Events in JavaScript</h2>
+      <p>
+        Keyboard events are events that occur when the user interacts with the
+        keyboard. The most common keyboard events are keydown, keypress, and
+        keyup.
+      </p>
+
+      <ul>
+        <li>keydown: Triggered when a key is pressed down.</li>
+        <li>keyup: Triggered when the key is released.</li>
+      </ul>
+
+      <div class="demo-box">
+        <strong>Code Example (JavaScript):</strong>
+        <code>
+          document.addEventListener('keydown', function(e) {<br />
+          &nbsp;&nbsp;if (e.key === 'ArrowUp') {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;alert('Up arrow key pressed');<br />
+          &nbsp;&nbsp;} else if (e.key === 'ArrowDown') {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;console.log('Down arrow key pressed');<br />
+          &nbsp;&nbsp;} else if (e.key === 'ArrowLeft') {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;console.log('Left arrow key pressed');<br />
+          &nbsp;&nbsp;} else if (e.key === 'ArrowRight') {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;alert('Right arrow key pressed');<br />
+          &nbsp;&nbsp;}<br />
+          });
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <p>
+          Press any of the arrow keys (Up, Down, Left, Right) to see the event
+          in action.
+        </p>
+      </div>
+    </section>
+
+    <section class="mouse-events-section">
+      <h3>Mouse Events in JavaScript</h3>
+      <p>
+        Mouse events are triggered by actions performed with the mouse, such as
+        clicks, movements, or dragging.
+      </p>
+      <p>Common mouse events:</p>
+      <ul>
+        <li>
+          click: Triggered when the mouse button is clicked on an element.
+        </li>
+        <li>dblclick: Triggered when the mouse button is double-clicked.</li>
+        <li>mouseover: Triggered when the mouse pointer enters an element.</li>
+        <li>mouseout: Triggered when the mouse pointer leaves an element.</li>
+        <li>mousemove: Triggered when the mouse is moved over an element.</li>
+        <li>mousedown: Triggered when a mouse button is pressed down.</li>
+        <li>mouseup: Triggered when a mouse button is released.</li>
+      </ul>
+
+      <div class="demo-box">
+        <strong>Code Example (HTML):</strong>
+        <code>
+          &lt;div id="mouseArea"&gt;Click inside this box&lt;/div&gt;
+        </code>
+        <br />
+        <strong>Code Example (JavaScript):</strong>
+        <code>
+          document.getElementById('mouseArea').addEventListener('click',
+          function() {<br />
+          &nbsp;&nbsp;alert('Mouse Clicked!');<br />
+          });
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <div
+          id="mouseArea"
+          style="width: 200px; height: 200px; background-color: lightgray"
+        >
+          <p>Click inside this box</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="jquery-introduction">
+      <h2>JQuery Introduction</h2>
+      <p>
+        jQuery is a lightweight, fast, and feature-rich JavaScript library
+        designed to simplify HTML document manipulation, event handling,
+        animations, and Ajax interactions. It allows developers to write less
+        code to achieve more, providing cross-browser compatibility and powerful
+        functionality.
+      </p>
+    </section>
+
+    <section class="jquery-inclusion">
+      <h2>Including jQuery in Your Webpage</h2>
+      <p>
+        You can include jQuery on your webpage by either downloading the library
+        or using a Content Delivery Network (CDN). Below is an example of how to
+        include jQuery using a CDN.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (HTML):</strong>
+        <code
+          >&lt;script
+          src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;</code
+        >
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <p>jQuery is already included in this page.</p>
+        <button id="checkJQuery">Check jQuery Version</button>
+        <p id="jqueryVersion"></p>
+      </div>
+    </section>
+
+    <section class="jquery-event-loading">
+      <h2>$(document).ready() vs window.onload</h2>
+      <p>
+        Both methods are used to run code when the page is loaded, but there are
+        key differences:
+      </p>
+      <ul>
+        <li>
+          <strong>$(document).ready():</strong> Runs when the DOM is fully
+          loaded, even if other resources (images, stylesheets) are not.
+        </li>
+        <li>
+          <strong>window.onload:</strong> Runs only after the entire page,
+          including images and styles, has loaded.
+        </li>
+      </ul>
+    </section>
+
+    <section class="jquery-selection">
+      <h2>Element Selection in jQuery</h2>
+      <p>
+        jQuery provides various selectors for selecting HTML elements. You can
+        use standard CSS selectors or jQuery-specific selectors to target
+        elements.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (jQuery Selectors):</strong>
+        <code>
+          $('#myId'); // Selects element with id "myId"<br />
+          $('.myClass'); // Selects all elements with class "myClass"<br />
+          $('div'); // Selects all div elements
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <p>
+          Click the buttons to highlight different elements using jQuery
+          selectors.
+        </p>
+        <button id="selectById">Select by ID</button>
+        <button id="selectByClass">Select by Class</button>
+        <button id="selectByTag">Select by Tag</button>
+        <button id="clearSelection">Clear Selection</button>
+
+        <div id="selectionDemo">
+          <button id="demoId">Button with ID</button>
+          <p class="demoClass">Paragraph with class</p>
+          <div>Div element</div>
+          <p class="demoClass">Another paragraph with class</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="jquery-events">
+      <h2>jQuery Event Handling</h2>
+      <p>
+        jQuery simplifies event handling. Here are some common event methods:
+      </p>
+
+      <h3>.click()</h3>
+      <p>
+        The `.click()` method attaches a function to a click event on an
+        element.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (jQuery - .click()):</strong>
+        <code>
+          $('#JBtn').click(function() {<br />
+          &nbsp;&nbsp;alert('Button clicked!');<br />
+          });
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <button id="JBtn">Click Me</button>
+      </div>
+
+      <h3>.submit()</h3>
+      <p>The `.submit()` method binds a function to a form submission event.</p>
+
+      <div class="demo-box">
+        <strong>Code Example (jQuery - .submit()):</strong>
+        <code>
+          $('#demoForm').submit(function(e) {<br />
+          &nbsp;&nbsp;e.preventDefault();<br />
+          &nbsp;&nbsp;alert('Form submitted!');<br />
+          });
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <form id="demoForm">
+          <input type="text" placeholder="Enter text" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <h3>.hover()</h3>
+      <p>The `.hover()` method handles mouseenter and mouseleave events.</p>
+
+      <div class="demo-box">
+        <strong>Code Example (jQuery - .hover()):</strong>
+        <code>
+          $('#hoverElement').hover(function() {<br />
+          &nbsp;&nbsp;$(this).css('background-color', 'yellow');<br />
+          }, function() {<br />
+          &nbsp;&nbsp;$(this).css('background-color', 'lightblue');<br />
+          });
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <div
+          id="hoverElement"
+          style="
+            width: 200px;
+            height: 50px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          Hover over me!
+        </div>
+      </div>
+    </section>
+
+    <section class="jquery-manipulation">
+      <h2>Element Manipulation in jQuery</h2>
+      <p>
+        jQuery provides several methods to manipulate the content and structure
+        of elements.
+      </p>
+
+      <h3>.append(), .prepend(), .before(), .after()</h3>
+      <p>
+        These methods are used to add content to elements in different ways.
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (jQuery - Content Manipulation):</strong>
+        <code>
+          $('#myDiv').append('&lt;p&gt;Appended content&lt;/p&gt;');<br />
+          $('#myDiv').prepend('&lt;p&gt;Prepended content&lt;/p&gt;');<br />
+          $('#myDiv').before('&lt;p&gt;Content before the div&lt;/p&gt;');<br />
+          $('#myDiv').after('&lt;p&gt;Content after the div&lt;/p&gt;');<br />
+          <strong>Reset</strong><br />
+          $("#myDiv").html("Original Content");<br />
+          $("#myDiv").nextAll("p").remove();<br />
+          $("#myDiv").prevAll("p").remove();
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <button id="appendBtn">Append Content</button>
+        <button id="prependBtn">Prepend Content</button>
+        <button id="beforeBtn">Add Before</button>
+        <button id="afterBtn">Add After</button>
+        <button id="resetManipulation">Reset</button>
+
+        <div
+          id="myDiv"
+          style="
+            width: auto;
+            height: 50px;
+            background-color: lightgray;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          Original Content
+        </div>
+      </div>
+    </section>
+
+    <section class="jquery-methods">
+      <h2>jQuery Methods for Content and Style</h2>
+      <p>
+        Here are some essential methods for manipulating HTML content, CSS
+        styles, and form element values:
+      </p>
+
+      <h3>.html(), .css(), .text(), .val()</h3>
+
+      <div class="demo-box">
+        <strong>Code Example (jQuery - .html()):</strong>
+        <code>
+          $('#htmlDemo').html('&lt;strong&gt;New HTML content!&lt;/strong&gt;');
+        </code>
+        <br /><br />
+        <strong>Code Example (jQuery - .css()):</strong>
+        <code> $('#cssDemo').css('background-color', 'lightgreen'); </code>
+        <br /><br />
+        <strong>Code Example (jQuery - .text()):</strong>
+        <code> $('#textDemo').text('New text content!'); </code>
+        <br /><br />
+        <strong>Code Example (jQuery - .val()):</strong>
+        <code> $('#valDemo').val('New input value'); </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <button id="htmlBtn">Test .html()</button>
+        <button id="cssBtn">Test .css()</button>
+        <button id="textBtn">Test .text()</button>
+        <button id="valBtn">Test .val()</button>
+        <button id="resetMethods">Reset All</button>
+
+        <div
+          id="htmlDemo"
+          style="
+            width: 200px;
+            height: 50px;
+            background-color: lightgray;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          Original HTML
+        </div>
+        <div
+          id="cssDemo"
+          style="
+            width: 200px;
+            height: 50px;
+            background-color: lightblue;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          CSS Demo
+        </div>
+        <div
+          id="textDemo"
+          style="
+            width: 200px;
+            height: 50px;
+            background-color: lightyellow;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          Original Text
+        </div>
+        <input
+          type="text"
+          id="valDemo"
+          value="Old input value"
+          style="margin: 10px 0"
+        />
+      </div>
+    </section>
+
+    <section class="jquery-show-hide">
+      <h2>Showing, Hiding, and Toggling Elements in jQuery</h2>
+      <p>
+        jQuery makes it easy to control the visibility of elements on the page:
+      </p>
+
+      <div class="demo-box">
+        <strong>Code Example (jQuery - .show(), .hide(), .toggle()):</strong>
+        <code>
+          $('#toggleDemo').show(); // Show element<br />
+          $('#toggleDemo').hide(); // Hide element<br />
+          $('#toggleDemo').toggle(); // Toggle visibility of element
+        </code>
+      </div>
+
+      <div class="demo-box">
+        <h3>Try It:</h3>
+        <button id="showBtn">Show</button>
+        <button id="hideBtn">Hide</button>
+        <button id="toggleBtn">Toggle</button>
+
+        <div
+          id="toggleDemo"
+          style="
+            width: 200px;
+            height: 50px;
+            background-color: lightblue;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          Click to toggle visibility
+        </div>
+      </div>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
